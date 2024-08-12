@@ -8,7 +8,7 @@ export function addXCConfigurationList(
     xcodeProject: XcodeProject,
     {
         targetName,
-        buildSettings: buildSettings,
+        buildSettings,
     }: {
         targetName: string
         buildSettings: BuildSettigs

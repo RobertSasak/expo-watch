@@ -1,12 +1,12 @@
 import { ConfigPlugin, withXcodeProject } from '@expo/config-plugins'
 
-import { addXCConfigurationList } from './addXCConfigurationList'
+import { addBuildPhases } from './addBuildPhases'
+import { addPbxGroup } from './addPbxGroup'
 import { addProductFile } from './addProductFile'
+import { addTargetDependency } from './addTargetDependency'
 import { addToPbxNativeTargetSection } from './addToPbxNativeTargetSection'
 import { addToPbxProjectSection } from './addToPbxProjectSection'
-import { addTargetDependency } from './addTargetDependency'
-import { addPbxGroup } from './addPbxGroup'
-import { addBuildPhases } from './addBuildPhases'
+import { addXCConfigurationList } from './addXCConfigurationList'
 
 const withWatchApp: ConfigPlugin<{
     targetName?: string
