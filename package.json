@@ -1,6 +1,6 @@
 {
     "name": "expo-watch",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Watch companion app for iOS Expo app. ",
     "main": "build/index.js",
     "types": "build/index.d.ts",
@@ -13,8 +13,7 @@
         "prepublishOnly": "expo-module prepublishOnly",
         "expo-module": "expo-module",
         "open:ios": "xed example/ios",
-        "open:android": "open -a \"Android Studio\" example/android",
-        "publish": "npx np"
+        "open:android": "open -a \"Android Studio\" example/android"
     },
     "keywords": [
         "react-native",
