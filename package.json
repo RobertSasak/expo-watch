@@ -1,6 +1,6 @@
 {
     "name": "expo-watch",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "description": "Watch companion app for iOS Expo app. ",
     "main": "build/index.js",
     "types": "build/index.d.ts",
