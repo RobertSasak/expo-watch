@@ -21,7 +21,7 @@ yarn add expo-watch
 ```
 
 ```bash
-# eject Expo app
+# temporary eject Expo app
 npx expo prebuild --platform ios --clean
 # open xcode workspace
 xed ios

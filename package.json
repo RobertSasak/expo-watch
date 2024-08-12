@@ -8,12 +8,13 @@
         "build": "expo-module build",
         "clean": "expo-module clean",
         "lint": "expo-module lint",
-        "test": "expo-module test",
+        "test": "echo \"No test yet. Eventualy run expo-module test\"",
         "prepare": "expo-module prepare",
         "prepublishOnly": "expo-module prepublishOnly",
         "expo-module": "expo-module",
         "open:ios": "xed example/ios",
-        "open:android": "open -a \"Android Studio\" example/android"
+        "open:android": "open -a \"Android Studio\" example/android",
+        "publish": "npx np"
     },
     "keywords": [
         "react-native",
@@ -40,5 +41,17 @@
         "react": "*",
         "react-native": "*"
     },
+    "files": [
+        "app.plugin.js",
+        "expo-module.config.js",
+        "plugin/build/addBuildPhases.js",
+        "plugin/build/addPbxGroup.js",
+        "plugin/build/addProductFile.js",
+        "plugin/build/addTargetDependency.js",
+        "plugin/build/addToPbxNativeTargetSection.js",
+        "plugin/build/addToPbxProjectSection.js",
+        "plugin/build/addXCConfigurationList.js",
+        "plugin/build/withWatchApp.js"
+    ],
     "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
 }
