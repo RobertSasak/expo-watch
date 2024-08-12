@@ -44,13 +44,21 @@
         "app.plugin.js",
         "expo-module.config.js",
         "plugin/build/addBuildPhases.js",
+        "plugin/build/addBuildPhases.d.ts",
         "plugin/build/addPbxGroup.js",
+        "plugin/build/addPbxGroup.d.ts",
         "plugin/build/addProductFile.js",
+        "plugin/build/addProductFile.d.ts",
         "plugin/build/addTargetDependency.js",
+        "plugin/build/addTargetDependency.d.ts",
         "plugin/build/addToPbxNativeTargetSection.js",
+        "plugin/build/addToPbxNativeTargetSection.d.ts",
         "plugin/build/addToPbxProjectSection.js",
+        "plugin/build/addToPbxProjectSection.d.ts",
         "plugin/build/addXCConfigurationList.js",
-        "plugin/build/withWatchApp.js"
+        "plugin/build/addXCConfigurationList.d.ts",
+        "plugin/build/withWatchApp.js",
+        "plugin/build/withWatchApp.d.ts"
     ],
     "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
 }
