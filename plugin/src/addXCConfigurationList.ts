@@ -1,28 +1,30 @@
 import { XcodeProject } from '@expo/config-plugins'
 
-interface BuildSettigs {
-    [key: string]: string | number
-}
+export type BuildSettings = Record<string, string | number>
 
 export function addXCConfigurationList(
     xcodeProject: XcodeProject,
     {
         targetName,
         buildSettings,
+        debugBuildSettings,
+        releaseBuildSettings,
     }: {
         targetName: string
-        buildSettings: BuildSettigs
+        buildSettings: BuildSettings
+        debugBuildSettings: BuildSettings
+        releaseBuildSettings: BuildSettings
     },
 ) {
     const buildConfigurationsList = [
         {
             isa: 'XCBuildConfiguration',
-            buildSettings,
+            buildSettings: { ...buildSettings, ...debugBuildSettings },
             name: 'Debug',
         },
         {
             isa: 'XCBuildConfiguration',
-            buildSettings,
+            buildSettings: { ...buildSettings, ...releaseBuildSettings },
             name: 'Release',
         },
     ]

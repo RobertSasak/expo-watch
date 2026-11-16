@@ -74,10 +74,8 @@ You can copy this configuration and adjust it to your needs. Remmeber to replace
         "CODE_SIGN_IDENTITY": "\"Apple Development\"",
         "CODE_SIGN_STYLE": "Automatic",
         "CURRENT_PROJECT_VERSION": "1",
-        "DEBUG_INFORMATION_FORMAT": "dwarf",
         "DEVELOPMENT_ASSET_PATHS": "\"\\\"../Example\\ Watch\\ App/Preview\\ Content\\\"\"", // TODO
         "DEVELOPMENT_TEAM": "\"XXXXXXXXXX\"", // TODO
-        "ENABLE_PREVIEWS": "YES",
         "ENABLE_USER_SCRIPT_SANDBOXING": "YES",
         "GCC_C_LANGUAGE_STANDARD": "gnu17",
         "GENERATE_INFOPLIST_FILE": "YES",
@@ -87,19 +85,32 @@ You can copy this configuration and adjust it to your needs. Remmeber to replace
         "INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp": "YES",
         "LD_RUNPATH_SEARCH_PATHS": "(\"$(inherited)\",\"@executable_path/Frameworks\")",
         "LOCALIZATION_PREFERS_STRING_CATALOGS": "YES",
-        "MTL_ENABLE_DEBUG_INFO": "INCLUDE_SOURCE",
         "MTL_FAST_MATH": "YES",
-        "OTHER_SWIFT_FLAGS": "\"$(inherited) -D EXPO_CONFIGURATION_DEBUG\"",
         "PRODUCT_BUNDLE_IDENTIFIER": "com.example.parentapp.watchkitapp", // TODO
         "PRODUCT_NAME": "\"$(TARGET_NAME)\"",
         "SDKROOT": "watchos",
         "SKIP_INSTALL": "YES",
-        "SWIFT_ACTIVE_COMPILATION_CONDITIONS": "\"DEBUG $(inherited)\"",
         "SWIFT_EMIT_LOC_STRINGS": "YES",
-        "SWIFT_OPTIMIZATION_LEVEL": "-Onone",
         "SWIFT_VERSION": 5.0,
         "TARGETED_DEVICE_FAMILY": 4,
         "WATCHOS_DEPLOYMENT_TARGET": 8.0
+    },
+    "debugBuildSettings": {
+        "DEBUG_INFORMATION_FORMAT": "dwarf",
+        "ENABLE_PREVIEWS": "YES",
+        "MTL_ENABLE_DEBUG_INFO": "INCLUDE_SOURCE",
+        "OTHER_SWIFT_FLAGS": "\"$(inherited) -D EXPO_CONFIGURATION_DEBUG\"",
+        "SWIFT_ACTIVE_COMPILATION_CONDITIONS": "\"DEBUG $(inherited)\"",
+        "SWIFT_OPTIMIZATION_LEVEL": "-Onone"
+    },
+    "releaseBuildSettings": {
+        "DEBUG_INFORMATION_FORMAT": "\"dwarf-with-dsym\"",
+        "ENABLE_PREVIEWS": "NO",
+        "MTL_ENABLE_DEBUG_INFO": "NO",
+        "OTHER_SWIFT_FLAGS": "\"$(inherited) -D EXPO_CONFIGURATION_RELEASE\"",
+        "SWIFT_COMPILATION_MODE": "wholemodule",
+        "SWIFT_OPTIMIZATION_LEVEL": "\"-O\"",
+        "VALIDATE_PRODUCT": "YES"
     },
     "files": ["Assets.xcassets", "ContentView.swift", "WatchApp.swift"],
     "compileSources": ["ContentView.swift", "WatchApp.swift"],
@@ -123,6 +134,16 @@ If true it will add propert _MARKETING_VERSION_ with version found in from app.j
 
 This list is intentionally empty by default. Plugin do not provide any hidden build settings. Feel free to copy it from above.
 
+These settings are applied to both Debug and Release configurations.
+
+#### debugBuildSettings?: Record<string, string | number> (default: {})
+
+Build settings applied only to the Debug configuration. They are merged on top of `buildSettings`.
+
+#### releaseBuildSettings?: Record<string, string | number> (default: {})
+
+Build settings applied only to the Release configuration. They are merged on top of `buildSettings`. Keep debug-only settings such as `SWIFT_OPTIMIZATION_LEVEL = -Onone` or the `DEBUG` compilation condition out of `buildSettings`, otherwise the archived watch app is built without optimizations.
+
 #### files?: string[] (default: [])
 
 List of files that will be linked to xcode workspace. Here you include all swift and xcassets files.
@@ -140,6 +161,13 @@ List of xcassets files. Typically these two files.
   "Assets.xcassets",
   "Preview Assets.xcassets"
 ]
+```
+
+Localized `.strings` files are added by their path inside the `.lproj` folder. List them in both `files` and `copyBundleResources`.
+
+```json
+"files": ["en.lproj/Localizable.strings", "nb.lproj/Localizable.strings"],
+"copyBundleResources": ["en.lproj/Localizable.strings", "nb.lproj/Localizable.strings"]
 ```
 
 ## Contributing

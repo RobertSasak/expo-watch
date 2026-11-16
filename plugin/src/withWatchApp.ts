@@ -6,13 +6,15 @@ import { addProductFile } from './addProductFile'
 import { addTargetDependency } from './addTargetDependency'
 import { addToPbxNativeTargetSection } from './addToPbxNativeTargetSection'
 import { addToPbxProjectSection } from './addToPbxProjectSection'
-import { addXCConfigurationList } from './addXCConfigurationList'
+import { addXCConfigurationList, BuildSettings } from './addXCConfigurationList'
 
 const withWatchApp: ConfigPlugin<{
     targetName?: string
     groupName?: string
     setVersionFromCompanionApp?: boolean
-    buildSettings?: Record<string, string | number>
+    buildSettings?: BuildSettings
+    debugBuildSettings?: BuildSettings
+    releaseBuildSettings?: BuildSettings
     files?: string[]
     compileSources?: string[]
     copyBundleResources?: string[]
@@ -23,6 +25,8 @@ const withWatchApp: ConfigPlugin<{
         groupName = 'Embed Watch Content',
         setVersionFromCompanionApp = true,
         buildSettings = {},
+        debugBuildSettings = {},
+        releaseBuildSettings = {},
         files = [],
         compileSources = [],
         copyBundleResources = [],
@@ -42,6 +46,8 @@ const withWatchApp: ConfigPlugin<{
                     ? { MARKETING_VERSION: version }
                     : undefined),
             },
+            debugBuildSettings,
+            releaseBuildSettings,
         })
 
         const productFile = addProductFile(xcodeProject, {
