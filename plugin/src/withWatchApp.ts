@@ -3,6 +3,7 @@ import { ConfigPlugin, withXcodeProject } from '@expo/config-plugins'
 import { addBuildPhases } from './addBuildPhases'
 import { addPbxGroup } from './addPbxGroup'
 import { addProductFile } from './addProductFile'
+import { addSwiftPackages, SwiftPackage } from './addSwiftPackages'
 import { addTargetDependency } from './addTargetDependency'
 import { addToPbxNativeTargetSection } from './addToPbxNativeTargetSection'
 import { addToPbxProjectSection } from './addToPbxProjectSection'
@@ -18,6 +19,7 @@ const withWatchApp: ConfigPlugin<{
     files?: string[]
     compileSources?: string[]
     copyBundleResources?: string[]
+    swiftPackages?: SwiftPackage[]
 }> = (
     config,
     {
@@ -30,6 +32,7 @@ const withWatchApp: ConfigPlugin<{
         files = [],
         compileSources = [],
         copyBundleResources = [],
+        swiftPackages = [],
     } = {},
 ) => {
     return withXcodeProject(config, (config) => {
@@ -70,12 +73,18 @@ const withWatchApp: ConfigPlugin<{
             files,
         })
 
-        addBuildPhases(xcodeProject, {
+        const { frameworksBuildPhaseUuid } = addBuildPhases(xcodeProject, {
             targetUuid,
             groupName,
             productFile,
             compileSources,
             copyBundleResources,
+        })
+
+        addSwiftPackages(xcodeProject, {
+            targetUuid,
+            frameworksBuildPhaseUuid,
+            swiftPackages,
         })
 
         return config

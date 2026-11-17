@@ -62,7 +62,7 @@ export function addBuildPhases(
     xcodeProject.addToPbxBuildFileSection(productFile)
 
     // Frameworks build phase
-    xcodeProject.addBuildPhase(
+    const frameworksBuildPhase = xcodeProject.addBuildPhase(
         [],
         'PBXFrameworksBuildPhase',
         groupName,
@@ -80,4 +80,5 @@ export function addBuildPhases(
         folderType,
         buildPath,
     )
+    return { frameworksBuildPhaseUuid: frameworksBuildPhase.uuid as string }
 }

@@ -170,6 +170,27 @@ Localized `.strings` files are added by their path inside the `.lproj` folder. L
 "copyBundleResources": ["en.lproj/Localizable.strings", "nb.lproj/Localizable.strings"]
 ```
 
+#### swiftPackages?: { url: string, version: string, products: string[] }[] (default: [])
+
+Swift packages linked into the watch app. `version` is the minimum version; Xcode resolves up to the next major version. `products` lists the package products the watch app imports.
+
+```json
+"swiftPackages": [
+    {
+        "url": "https://github.com/kean/Nuke",
+        "version": "12.8.0",
+        "products": ["Nuke", "NukeUI"]
+    },
+    {
+        "url": "https://github.com/RobertSasak/WatchMap",
+        "version": "2.0.0",
+        "products": ["WatchMap"]
+    }
+]
+```
+
+If the iOS app already depends on the same package URL, its package reference is reused.
+
 ## Contributing
 
 As this a niche plugin it is not possible to provide a lot of support. If you have any issues please open an issue on this repo. I will try to help you as much as I can. There are only handful of code files in this plugin so you can easily debug it yourself.

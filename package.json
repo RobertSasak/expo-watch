@@ -49,6 +49,8 @@
         "plugin/build/addPbxGroup.d.ts",
         "plugin/build/addProductFile.js",
         "plugin/build/addProductFile.d.ts",
+        "plugin/build/addSwiftPackages.js",
+        "plugin/build/addSwiftPackages.d.ts",
         "plugin/build/addTargetDependency.js",
         "plugin/build/addTargetDependency.d.ts",
         "plugin/build/addToPbxNativeTargetSection.js",
